@@ -1,23 +1,37 @@
-import logo from './logo.svg';
 import './App.css';
+import { Router, Routes, Route ,Link} from "react-router-dom";
+import { useDispatch, useSelector } from 'react-redux'
+import ListMovies from './Component/listMovies';
+import Details from './Component/Details';
+import AddMovies from './Component/AddMovies';
+
+
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className='BG'>
+        <div className='menu'>
+          <Link className='LMenu' to='/' >list movies</Link>
+          <Link className='LMenu' to='/add' >add movies</Link>
+          <Link className='LMenu' to='/' >acceuil</Link>
+        </div>
+      </div>
+
+
+      <Routes>
+        <Route path="/" element={<ListMovies />} />
+        <Route path="/add" element={<AddMovies />} />
+        <Route path="/details/:id" element={<Details />} />
+      </Routes>
+      
+      {/* <Router>
+        <NavBar/>
+        <Routes>
+          <Route path='/contacts' element={<ListContacts/>}/>
+          <Route path='/' element={<Acceuil/>}/>
+        </Routes>
+      </Router> */}
     </div>
   );
 }
